@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150811204553) do
+ActiveRecord::Schema.define(version: 20150811222202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150811204553) do
     t.date    "date"
     t.decimal "yield"
     t.integer "quantity_id"
+    t.integer "planting_id"
   end
 
   create_table "plantings", force: :cascade do |t|
@@ -32,6 +33,18 @@ ActiveRecord::Schema.define(version: 20150811204553) do
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "quantities", force: :cascade do |t|
+    t.decimal "amount"
+  end
+
+  create_table "quantitys", force: :cascade do |t|
+    t.decimal "amount"
+  end
+
+  create_table "sizes", force: :cascade do |t|
+    t.string "plot"
   end
 
   create_table "users", force: :cascade do |t|
