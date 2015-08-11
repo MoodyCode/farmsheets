@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150811183741) do
+ActiveRecord::Schema.define(version: 20150811204553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "harvests", force: :cascade do |t|
+    t.date    "date"
+    t.decimal "yield"
+    t.integer "quantity_id"
+  end
 
   create_table "plantings", force: :cascade do |t|
     t.date     "date"
