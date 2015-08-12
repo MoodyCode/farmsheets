@@ -2,5 +2,15 @@
 @import "bootstrap";
 
 body { 
+  background-image: url('https://lh3.googleusercontent.com/q2koucgtt5Fl8INDxH4I8WI8cdr5Gsek2t7dCKBBBtUAswzdv0YjBzPy583QzZKjsBqlsM6ZljYOgl6OG8WNkkY=s0');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   padding-top: 70px; 
+}
+
+.welcome {
+  background-color: white;
+  opacity: .9;
+  height: 30em;
 }
