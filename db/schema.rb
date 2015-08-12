@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150811222202) do
+ActiveRecord::Schema.define(version: 20150812023023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20150811222202) do
     t.decimal "yield"
     t.integer "quantity_id"
     t.integer "planting_id"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string   "name"
+    t.decimal  "price"
+    t.string   "paypal_description"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "plantings", force: :cascade do |t|
@@ -45,6 +54,16 @@ ActiveRecord::Schema.define(version: 20150811222202) do
 
   create_table "sizes", force: :cascade do |t|
     t.string "plot"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.string   "paypay_payer_id"
+    t.string   "paypal_profile_id"
+    t.datetime "paid_until"
+    t.boolean  "canceled"
+    t.integer  "plan_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
