@@ -1,5 +1,6 @@
 class Planting < ActiveRecord::Base
   has_one :harvest
+  belongs_to :user
   belongs_to :quantity
   belongs_to :size
 
