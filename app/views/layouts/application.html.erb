@@ -11,14 +11,19 @@
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
-        <%= link_to "Farm Sheets", root_path, class: "navbar-brand" %>
+        <% if user_signed_in? %>
+          <%= link_to "Farm Sheets", plantings_path, class: "navbar-brand" %>
+        <% else %>
+          <%= link_to "Farm Sheets", root_path, class: "navbar-brand" %>
+        <% end %>
       </div>
 
       <div>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li><a href="#">Dashboard</a></li>
-            <li><%= link_to "Log Out", destroy_user_session_path %></li>
+            <li><a href="#">Your Account</a></li>
+            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
           <% else %>
             <li><a href="#">Start Your Free Trial</a></li>
             <li><%= link_to "Log In", new_user_session_path %></li>
