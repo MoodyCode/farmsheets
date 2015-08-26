@@ -1,1 +1,12 @@
-welcome.css
+body { 
+  background-image: url('https://images.unsplash.com/1/irish-hands.jpg?q=80&fm=jpg&s=8a820c7bc2cd36288f2e42085bb96a1e');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-top: 70px; 
+}
+
+.welcome {
+  color: green;
+  margin-top: 20%;
+}

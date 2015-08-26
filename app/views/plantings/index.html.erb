@@ -1,7 +1,61 @@
 <h1>Planting Records</h1>
 
-<h2 class="welcome col-md-12 text-center">Add a New Planting Record</h2>
+<p class="welcome col-md-12 text-center lead">Add a New Planting Record</p>
 
-<h2 class="welcome col-md-12 text-center">Bed To Be Harvested</h2>
+<%= render partial: "form" %>
 
-<h2 class="welcome col-md-12 text-center">Harvested Beds</h2>
+<p class="welcome col-md-12 text-center lead">Beds To Be Harvested</p>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <td>Planting Date</td>
+      <td>Planting Size</td>
+      <td>Crop</td>
+      <td>Variety</td>
+      <td>Qty of Seed</td>
+      <td>Harvest Date</td>
+      <td>Yield</td>
+      <td>Notes</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>7/15/15</td>
+      <td>Tray</td>
+      <td>Sunflower</td>
+      <td>Black Oilseed</td>
+      <td>2 ounces</td>
+      <td></td>
+      <td></td>
+      <td>First Crop</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="welcome col-md-12 text-center lead">Harvested Beds</p>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <td>Planting Date</td>
+      <td>Planting Size</td>
+      <td>Crop</td>
+      <td>Variety</td>
+      <td>Qty of Seed</td>
+      <td>Harvest Date</td>
+      <td>Yield</td>
+      <td>Notes</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>7/15/15</td>
+      <td>Tray</td>
+      <td>Sunflower</td>
+      <td>Black Oilseed</td>
+      <td>2 ounces</td>
+      <td>7/21/15</td>
+      <td>45 ounces</td>
+      <td>First Crop</td>
+    </tr>
+  </tbody>
+</table>
