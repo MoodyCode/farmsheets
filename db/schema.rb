@@ -11,16 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825175622) do
+ActiveRecord::Schema.define(version: 20150829174926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "crops", force: :cascade do |t|
+    t.string "name"
+  end
+
   create_table "harvests", force: :cascade do |t|
     t.date    "date"
     t.decimal "yield"
-    t.integer "quantity_id"
     t.integer "planting_id"
+    t.integer "measurement_id"
+  end
+
+  create_table "measurements", force: :cascade do |t|
+    t.string "unit"
   end
 
   create_table "plans", force: :cascade do |t|
@@ -34,27 +42,19 @@ ActiveRecord::Schema.define(version: 20150825175622) do
 
   create_table "plantings", force: :cascade do |t|
     t.date     "date"
-    t.integer  "size_id"
-    t.string   "crop"
-    t.string   "variety"
-    t.integer  "seed"
-    t.integer  "quantity_id"
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "crop_id"
+    t.integer  "varietal_id"
+    t.decimal  "quantity"
+    t.integer  "measurement_id"
+    t.integer  "plot_id"
   end
 
-  create_table "quantities", force: :cascade do |t|
-    t.decimal "amount"
-  end
-
-  create_table "quantitys", force: :cascade do |t|
-    t.decimal "amount"
-  end
-
-  create_table "sizes", force: :cascade do |t|
-    t.string "plot"
+  create_table "plots", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "subscriptions", force: :cascade do |t|
@@ -84,5 +84,9 @@ ActiveRecord::Schema.define(version: 20150825175622) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "varietals", force: :cascade do |t|
+    t.string "name"
+  end
 
 end
