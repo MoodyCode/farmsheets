@@ -1,84 +1,44 @@
-<form class="form-horizontal">
-  <div class="form-group">
-    <label for="plantingDate" class="col-sm-2 control-label">Planting Date</label>
-    <div class="col-sm-4">
-      <input type="text" class="form-control" id="plantingDate" placeholder="Planting Date">
-    </div>
-  </div>  
-
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Planting Size</label>
-    <div class="col-sm-offset-2">
-      <label class="radio-inline">
-        <input type="radio" name="optionsRadios" id="optionRadios1" value="tray"> Tray
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="optionsRadios" id="optionRadios2" value="bed" disabled> Bed
-      </label>
-    </div>
-  </div>  
-
-  <div class="form-group">
-    <label for="crop" class="col-sm-2 control-label">Crop</label>
-    <div class="col-sm-4">
-      <input type="text" class="form-control" id="crop" placeholder="Crop">
-    </div>
-  </div>  
-
-  <div class="form-group">
-    <label for="variety" class="col-sm-2 control-label">Variety</label>
-    <div class="col-sm-4">
-      <input type="text" class="form-control" id="variety" placeholder="Variety">
-    </div>
-  </div>  
-
-  <div class="form-group">
-    <label for="qtySeed" class="col-sm-2 control-label">Qty of Seed</label>
-    <div class="col-sm-4">
-      <input type="text" class="form-control" id="qtySeed" placeholder="Qty of Seed">
-    </div>
-    <div>
-      <label class="radio-inline">
-        <input type="radio" name="optionsRadios" id="optionsRadios1" value="ounces"> Ounces
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="optionsRadios" id="optionsRadios2" value="grams"> Grams
-      </label>
-    </div>
+<%= form_for @planting do |f| %>
+  <div class="form-group dropdown">
+    <%= f.label "Planting Date", :class => 'control-label col-sm-2' %>
+    <%= date_select :date, :date, :class => 'form-control datepicker' %>
   </div>
-
-  <div class="form-group">
-    <label for="harvestDate" class="col-sm-2 control-label">Harvest Date</label>
-    <div class="col-sm-4">
-      <input type="text" class="form-control" id="harvestDate" placeholder="Harvest Date">
-    </div>
-  </div>  
-
-  <div class="form-group">
-    <label for="yield" class="col-sm-2 control-label">Yield</label>
-    <div class="col-sm-4">
-      <input type="text" class="form-control" id="yield" placeholder="Yield">
-    </div>
-    <div>
-      <label class="radio-inline">
-        <input type="radio" name="optionsRadios" id="optionsRadios1" value="ounces"> Ounces
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="optionsRadios" id="optionsRadios2" value="grams"> Grams
-      </label>
-    </div>
-  </div>  
-
-  <div class="form-group">
-    <label for="notes" class="col-sm-2 control-label">Notes</label>
-    <div class="col-sm-4">
-      <input type="textarea" class="form-control" id="notes" placeholder="Notes">
-    </div>
+  <div class="form-group col-sm-12">
+    <%= f.label "Planting Size", :class => 'control-label col-sm-2' %>
+    <%= f.radio_button :plot_id, "1", :checked => true, :class => 'radio-inline' %> Tray
+    <%= f.radio_button :plot_id, "2", :disabled => true, :class => 'radio-inline' %> Bed
   </div>
-
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Submit Record</button>
-    </div>
+  <div class="form-group col-sm-12">
+    <%= f.label :crop, :class => 'control-label col-sm-2' %>
+    <%= f.select :crop, @crops.map{ |c| [c.name, c.id] } %>
   </div>
-</form>
+  <div class="form-group col-sm-12">
+    <%= f.label :varietal, :class => 'control-label col-sm-2' %>
+    <%= f.select :varietal, @varietals.map{ |c| [c.name, c.id] } %>
+  </div>
+  <div class="form-group col-sm-12">
+    <%= f.label "Quantity of Seeds", :class => 'control-label col-sm-2' %>
+    <%= f.number_field :quantity, :class => 'text_field col-sm-2', :step => 'any' %>
+      <div class="form-group col-sm-2">
+        <%= f.radio_button :plot_id, "1", :checked => true, :class => 'radio-inline' %> Ounces
+        <%= f.radio_button :plot_id, "2", :disabled => true, :class => 'radio-inline' %> Grams
+      </div>
+  </div>
+  <div class="form-group dropdown">
+    <%= f.label "Harvest Date", :class => 'control-label col-sm-2' %>
+    <%= date_select :date, :date, :class => 'form-control datepicker' %>
+  </div>
+  <div class="form-group col-sm-12">
+    <%= f.label 'Yield', :class => 'control-label col-sm-2' %>
+    <%= f.number_field :measurement_id, :class => 'text_field col-md-2', :step => 'any'  %>
+      <div class="form-group col-sm-2">
+        <%= f.radio_button :plot_id, "1", :checked => true, :class => 'radio-inline' %> Ounces
+        <%= f.radio_button :plot_id, "2", :disabled => true, :class => 'radio-inline' %> Grams
+      </div>
+  </div>
+  <div class="form-group col-sm-12">
+    <%= f.label :notes, :class => 'control-label col-sm-2' %>
+    <%= f.text_area :notes, :class => 'text_field'  %>
+  </div>
+  <%= f.submit "Submit Record", :class => 'btn btn-default' %>
+<% end %>
