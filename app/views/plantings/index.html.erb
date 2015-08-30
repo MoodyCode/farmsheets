@@ -19,16 +19,18 @@
     </tr>
   </thead>
   <tbody>
+    <% @plantings.each do |planting| %>
     <tr>
-      <td>7/15/15</td>
+      <td><%= planting.date %></td>
       <td>Tray</td>
       <td>Sunflower</td>
       <td>Black Oilseed</td>
       <td>2 ounces</td>
       <td></td>
       <td></td>
-      <td>First Crop</td>
+      <td><%= planting.notes %></td>
     </tr>
+    <% end %>
   </tbody>
 </table>
 

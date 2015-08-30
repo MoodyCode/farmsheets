@@ -14,10 +14,12 @@ class PlantingsController < ApplicationController
 
   def new
     @planting = Planting.new
+    @crop = @planting.build_crop
   end
 
   def create
     @planting = Planting.new(planting_params)
+    @crop = @planting.build_crop
     if @planting.save
       flash[:notice] = "Your planting was successfully saved."
       redirect_to :root
@@ -30,7 +32,7 @@ class PlantingsController < ApplicationController
 private
 
   def planting_params
-    params.require(:planting).permit(:date, :crop_id, :quantity, :measurement_id, :notes, :plot_id, :user_id)
+    params.require(:planting).permit(:date, :crop_id, :quantity, :measurement_id, :notes, :plot_id, :user_id, crop_attributes: [:name])
   end
 
 end
