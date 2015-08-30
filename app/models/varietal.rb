@@ -1,3 +1,3 @@
 class Varietal < ActiveRecord::Base
-  has_many :plantings
+  belongs_to :crop
 end

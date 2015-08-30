@@ -5,6 +5,5 @@ describe Planting do
   it { should belong_to :plot }
   it { should belong_to :measurement }
   it { should belong_to :user }
-  it { should belong_to :varietal }
   it { should belong_to :crop }
 end
