@@ -5,7 +5,5 @@ class Planting < ActiveRecord::Base
   belongs_to :measurement
   belongs_to :plot
 
-  # attr_accessible :name, :crops_attributes
-
-  # accepts_nested_attributes_for :crops
+  accepts_nested_attributes_for :crop
 end

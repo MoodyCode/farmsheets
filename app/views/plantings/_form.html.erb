@@ -1,7 +1,8 @@
 <%= form_for @planting do |f| %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="form-group dropdown col-sm-12">
     <%= f.label "Planting Date", :class => 'control-label col-sm-2' %>
-    <%= date_select :date, :date, :class => 'form-control datepicker' %>
+    <%= date_select :planting, :date, :class => 'form-control datepicker' %>
   </div>
 
   <div class="form-group col-sm-12">
@@ -11,35 +12,23 @@
   </div>
 
   <div class="form-group col-sm-12">
-    <%= f.label :crop, :class => 'control-label col-sm-2' %>
-    <%= f.select :crop, @crops.map{ |c| [c.name, c.id] } %>
+    <%= f.fields_for :crops do |builder| %>
+      <%= render 'crop_fields', f: builder %>
+    <% end %>
   </div>
 
   <div class="form-group col-sm-12">
-    <%= f.label :varietal, :class => 'control-label col-sm-2' %>
-    <%= f.select :varietal, @varietals.map{ |c| [c.name, c.id] } %>
+    <%= f.fields_for :varietals do |builder| %>
+      <%= render 'varietal_fields', f: builder %>
+    <% end %>
   </div>
 
   <div class="form-group col-sm-12">
     <%= f.label "Quantity of Seeds", :class => 'control-label col-sm-2' %>
     <%= f.number_field :quantity, :class => 'text_field col-sm-2', :step => 'any' %>
       <div class="form-group col-sm-2">
-        <%= f.radio_button :plot_id, "1", :checked => true, :class => 'radio-inline' %> Ounces
-        <%= f.radio_button :plot_id, "2", :disabled => true, :class => 'radio-inline' %> Grams
-      </div>
-  </div>
-
-  <div class="form-group dropdown col-sm-12">
-    <%= f.label "Harvest Date", :class => 'control-label col-sm-2' %>
-    <%= date_select :date, :date, :class => 'form-control datepicker' %>
-  </div>
-
-  <div class="form-group col-sm-12">
-    <%= f.label 'Yield', :class => 'control-label col-sm-2' %>
-    <%= f.number_field :measurement_id, :class => 'text_field col-md-2', :step => 'any'  %>
-      <div class="form-group col-sm-2">
-        <%= f.radio_button :plot_id, "1", :checked => true, :class => 'radio-inline' %> Ounces
-        <%= f.radio_button :plot_id, "2", :disabled => true, :class => 'radio-inline' %> Grams
+        <%= f.radio_button :measurement_id, "1", :checked => true, :class => 'radio-inline' %> Ounces
+        <%= f.radio_button :measurement_id, "2", :class => 'radio-inline' %> Grams
       </div>
   </div>
 
