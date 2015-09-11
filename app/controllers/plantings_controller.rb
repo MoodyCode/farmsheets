@@ -31,7 +31,8 @@ class PlantingsController < ApplicationController
 private
 
   def planting_params
-    params.require(:planting).permit(:date, :crop_id, :quantity, :measurement_id, :notes, :plot_id, :user_id, crop_attributes: [:id, :name])
+    params.require(:planting).permit(:date, :crop_id, :quantity, :measurement_id, :notes, :plot_id, :user_id, 
+      crop_attributes: [:id, :name])
   end
 
 end

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root to: "static_pages#index"
 
   resources :plantings
+  resources :crops
   resources :plans
   resources :subscriptions do
     member do
