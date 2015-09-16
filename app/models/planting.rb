@@ -7,4 +7,5 @@ class Planting < ActiveRecord::Base
   belongs_to :varietal
 
   accepts_nested_attributes_for :crop
+  accepts_nested_attributes_for :planting
 end

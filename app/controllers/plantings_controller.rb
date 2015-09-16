@@ -13,9 +13,7 @@ class PlantingsController < ApplicationController
   end
 
   def new
-    @crops = Crop.all
     @planting = Planting.new
-    # @crop = @planting.build_crop
   end
 
   def create
@@ -33,7 +31,8 @@ private
 
   def planting_params
     params.require(:planting).permit(:date, :crop_id, :quantity, :measurement_id, :notes, :plot_id, :user_id, 
-      crop_attributes: [:id, :name])
+      crop_attributes: [:id, :name],
+      varietal_attributes: [:id, :name])
   end
 
 end
