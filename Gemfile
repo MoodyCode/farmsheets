@@ -10,7 +10,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.5'
-gem 'paypal-recurring'
+gem 'stripe'
 
 group :development do
   gem 'byebug'
