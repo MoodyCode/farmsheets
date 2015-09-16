@@ -13,8 +13,9 @@ class PlantingsController < ApplicationController
   end
 
   def new
+    @crops = Crop.all
     @planting = Planting.new
-    @crop = @planting.build_crop
+    # @crop = @planting.build_crop
   end
 
   def create
