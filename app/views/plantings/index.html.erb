@@ -4,60 +4,62 @@
 
 <%= render partial: "form" %>
 
-<p class="welcome col-md-12 text-center lead">Beds To Be Harvested</p>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <td>Planting Date</td>
-      <td>Planting Size</td>
-      <td>Crop</td>
-      <td>Variety</td>
-      <td>Qty of Seed</td>
-      <td>Harvest Date</td>
-      <td>Yield</td>
-      <td>Notes</td>
-    </tr>
-  </thead>
-  <tbody>
-    <% @plantings.each do |planting| %>
-    <tr>
-      <td><%= planting.date %></td>
-      <td>Tray</td>
-      <td>Sunflower</td>
-      <td>Black Oilseed</td>
-      <td>2 ounces</td>
-      <td></td>
-      <td></td>
-      <td><%= planting.notes %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<% if @plantings.any? %>
+  <p class="welcome col-md-12 text-center lead">Beds To Be Harvested</p>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>Planting Date</td>
+        <td>Planting Size</td>
+        <td>Crop</td>
+        <td>Variety</td>
+        <td>Qty of Seed</td>
+        <td>Notes</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @plantings.each do |planting| %>
+      <tr>
+        <td><%= planting.date %></td>
+        <td><%= planting.plot.name %></td>
+        <td><%= planting.crop.name %></td>
+        <td><%= planting.varietal.name %></td>
+        <td><%= planting.quantity %> <%= planting.measurement.unit %></td>
+        <td><%= planting.notes %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 
-<p class="welcome col-md-12 text-center lead">Harvested Beds</p>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <td>Planting Date</td>
-      <td>Planting Size</td>
-      <td>Crop</td>
-      <td>Variety</td>
-      <td>Qty of Seed</td>
-      <td>Harvest Date</td>
-      <td>Yield</td>
-      <td>Notes</td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>7/15/15</td>
-      <td>Tray</td>
-      <td>Sunflower</td>
-      <td>Black Oilseed</td>
-      <td>2 ounces</td>
-      <td>7/21/15</td>
-      <td>45 ounces</td>
-      <td>First Crop</td>
-    </tr>
-  </tbody>
-</table>
+<% if @harvests.any? %>
+  <p class="welcome col-md-12 text-center lead">Harvested Beds</p>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>Planting Date</td>
+        <td>Planting Size</td>
+        <td>Crop</td>
+        <td>Variety</td>
+        <td>Qty of Seed</td>
+        <td>Harvest Date</td>
+        <td>Yield</td>
+        <td>Notes</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @harvests.each do |harvest| %>
+      <tr>
+        <td><%= harvest.plantings.date %></td>
+        <td><%= harvest.plantings.plot.name %></td>
+        <td><%= harvest.plantings.crop.name %></td>
+        <td><%= harvest.plantings.varietal.name %></td>
+        <td><%= harvest.plantings.quantity %> <%= harvest.plantings.measurement.unit %></td>
+        <td></td>
+        <td></td>
+        <td><%= harvest.plantings.notes %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

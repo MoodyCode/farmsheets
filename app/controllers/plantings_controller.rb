@@ -5,6 +5,7 @@ class PlantingsController < ApplicationController
     @user = current_user
     @plantings = @user.plantings.all
     @planting = Planting.new
+    @harvests = Harvest.all
   end
 
   def show
@@ -30,9 +31,7 @@ class PlantingsController < ApplicationController
 private
 
   def planting_params
-    params.require(:planting).permit(:date, :crop_id, :quantity, :measurement_id, :notes, :plot_id, :user_id, 
-      crop_attributes: [:id, :name],
-      varietal_attributes: [:id, :name])
+    params.require(:planting).permit(:date, :crop_id, :quantity, :measurement_id, :notes, :plot_id, :user_id, :varietal_id)
   end
 
 end
