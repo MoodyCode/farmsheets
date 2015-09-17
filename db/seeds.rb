@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Measurement.create([{:unit => 'ounces'}, {:unit => 'grams'})
+Measurement.create([{:unit => 'ounces'}, {:unit => 'grams'}])
 Plot.create([{:name => 'tray'}, {:name => 'bed'}])
 crop = Crop.create([:name => 'Sunflower'])
 crop.varietal.create([:name => 'Blackseed'])
