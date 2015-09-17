@@ -8,4 +8,4 @@
 Measurement.create([{:unit => 'ounces'}, {:unit => 'grams'}])
 Plot.create([{:name => 'tray'}, {:name => 'bed'}])
 crop = Crop.create([:name => 'Sunflower'])
-crop.varietal.create([:name => 'Blackseed'])
+crop.varietals.create([:name => 'Blackseed'])
