@@ -15,18 +15,22 @@
         <td>Variety</td>
         <td>Qty of Seed</td>
         <td>Notes</td>
+        <td></td>
       </tr>
     </thead>
     <tbody>
       <% @plantings.each do |planting| %>
-      <tr>
-        <td><%= planting.date %></td>
-        <td><%= planting.plot.name %></td>
-        <td><%= planting.crop.name %></td>
-        <td><%= planting.varietal.name %></td>
-        <td><%= planting.quantity %> <%= planting.measurement.unit %></td>
-        <td><%= planting.notes %></td>
-      </tr>
+        <% if planting.harvest.blank? %>
+          <tr>
+            <td><%= planting.date %></td>
+            <td><%= planting.plot.name %></td>
+            <td><%= planting.crop.name %></td>
+            <td><%= planting.varietal.name %></td>
+            <td><%= planting.quantity %> <%= planting.measurement.unit %></td>
+            <td><%= planting.notes %></td>
+            <td><%= link_to "Add Harvest", new_planting_harvest_path(planting), class: 'btn btn-default btn-sm' %></td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
