@@ -50,14 +50,14 @@
     <tbody>
       <% @harvests.each do |harvest| %>
       <tr>
-        <td><%= harvest.plantings.date %></td>
-        <td><%= harvest.plantings.plot.name %></td>
-        <td><%= harvest.plantings.crop.name %></td>
-        <td><%= harvest.plantings.varietal.name %></td>
-        <td><%= harvest.plantings.quantity %> <%= harvest.plantings.measurement.unit %></td>
-        <td></td>
-        <td></td>
-        <td><%= harvest.plantings.notes %></td>
+        <td><%= harvest.planting.date %></td>
+        <td><%= harvest.planting.plot.name %></td>
+        <td><%= harvest.planting.crop.name %></td>
+        <td><%= harvest.planting.varietal.name %></td>
+        <td><%= harvest.planting.quantity %> <%= harvest.planting.measurement.unit %></td>
+        <td><%= harvest.date %></td>
+        <td><%= harvest.yield %> <%= harvest.measurement.unit %></td>
+        <td><%= harvest.planting.notes %></td>
       </tr>
       <% end %>
     </tbody>

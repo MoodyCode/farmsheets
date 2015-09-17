@@ -1,19 +1,19 @@
-class Harvest < ApplicationController
+class HarvestsController < ApplicationController
 
   def index
 
   end
 
   def new
-    @planting = Planting.find(params[:id])
-    @harvest = @planting.harvests.new
+    @planting = Planting.find(params[:planting_id])
+    @harvest = @planting.build_harvest
   end
 
   def create
-    @planting = Planting.find(params[:id])
-    @harvest = @planting.harvests.new(harvest_params)
+    @planting = Planting.find(params[:planting_id])
+    @harvest = @planting.build_harvest(harvest_params)
     if @harvest.save
-      render :root
+      redirect_to :root
     else
       render new_harvest_path
     end
@@ -21,6 +21,6 @@ class Harvest < ApplicationController
 
 private
   def harvest_params
-    params.require(:harvest).permit(:date, :yield, :planting_id, :measurement_id)
+    params.require(:harvest).permit(:date, :yield, :measurement_id)
   end
 end
