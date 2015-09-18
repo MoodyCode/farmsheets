@@ -1,7 +1,8 @@
 class CropsController < ApplicationController
 
   def index
-    @crops = Crop.all
+    @user = current_user
+    @plantings = @user.plantings.all
   end
 
   def new
@@ -17,6 +18,9 @@ class CropsController < ApplicationController
       flash[:notice] = "Something went wrong saving your crop."
       redirect_to new_crop_path
     end
+  end
+
+  def show
   end
 
 private

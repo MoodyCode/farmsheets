@@ -1,5 +1,60 @@
-<h1>Crops</h1>
+<h1 class="text-center">Dashboard</h1>
 
-<% @crops.each do |crop| %>
-  <p><%= crop.name %></p>
+<% @plantings.each do |planting| %>
+  <% if !planting.harvest.blank? %>
+    <h2><%= planting.crop.name %>: <%= planting.varietal.name %></h2>
+    <div class="col-sm-4">
+      <fieldset class="information-box">
+        <legend>Averages</legend>
+        <dl>
+          <dt>Average DTM</dt>
+          <dd><%= (planting.harvest.date - planting.date).to_i %></dd>
+        </dl>
+        <dl>
+          <dt>Average Yield</dt>
+          <dd>314 pounds</dd>
+        </dl>
+        <dl>
+          <dt>Average Seed Qty</dt>
+          <dd>33.4 ounces</dd>
+        </dl>
+      </fieldset>
+    </div>  
+
+    <div class="col-sm-4">
+      <fieldset class="information-box">
+        <legend>Highest Yield</legend>
+        <dl>
+          <dt>DTM</dt>
+          <dd>456</dd>
+        </dl>
+        <dl>
+          <dt>Yield</dt>
+          <dd>314 pounds</dd>
+        </dl>
+        <dl>
+          <dt>Seed Qty</dt>
+          <dd>33.4 ounces</dd>
+        </dl>
+      </fieldset>
+    </div>  
+
+    <div class="col-sm-4">
+      <fieldset class="information-box">
+        <legend>Lowest Yield</legend>
+        <dl>
+          <dt>DTM</dt>
+          <dd>456</dd>
+        </dl>
+        <dl>
+          <dt>Yield</dt>
+          <dd>314 pounds</dd>
+        </dl>
+        <dl>
+          <dt>Seed Qty</dt>
+          <dd>33.4 ounces</dd>
+        </dl>
+      </fieldset>
+    </div>
+  <% end %>
 <% end %>
