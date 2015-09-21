@@ -20,6 +20,7 @@ group :development do
   gem 'quiet_assets'
   gem 'letter_opener'
   gem 'pry'
+  gem 'awesome_print'
 end
 
 group :test, :development do

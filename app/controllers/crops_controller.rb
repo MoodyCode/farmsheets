@@ -2,7 +2,8 @@ class CropsController < ApplicationController
 
   def index
     @user = current_user
-    @plantings = @user.plantings.all
+    @plantings = @user.plantings.includes(:harvest, :crop, :varietal, :measurement)
+    @varietals_grouped = @plantings.group_by { |x| x.varietal.name }
   end
 
   def new

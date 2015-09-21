@@ -1,14 +1,13 @@
 <h1 class="text-center">Dashboard</h1>
 
-<% @plantings.each do |planting| %>
-  <% if !planting.harvest.blank? %>
-    <h2><%= planting.crop.name %>: <%= planting.varietal.name %></h2>
+<% @varietals_grouped.each do |key, value| %>
+  <h3 class="text-center"><%= value.first.crop.name %>: <small><%= key %></small> </h3>
     <div class="col-sm-4">
       <fieldset class="information-box">
         <legend>Averages</legend>
         <dl>
           <dt>Average DTM</dt>
-          <dd><%= (planting.harvest.date - planting.date).to_i %></dd>
+          <dd>45</dd>
         </dl>
         <dl>
           <dt>Average Yield</dt>
@@ -56,5 +55,4 @@
         </dl>
       </fieldset>
     </div>
-  <% end %>
 <% end %>
