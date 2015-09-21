@@ -1,9 +1,5 @@
 class HarvestsController < ApplicationController
 
-  def index
-
-  end
-
   def new
     @planting = Planting.find(params[:planting_id])
     @harvest = @planting.build_harvest
@@ -12,6 +8,7 @@ class HarvestsController < ApplicationController
   def create
     @planting = Planting.find(params[:planting_id])
     @harvest = @planting.build_harvest(harvest_params)
+    @harvest.dtm = (@harvest.date - @planting.date).to_i
     if @harvest.save
       redirect_to :root
     else
