@@ -19,7 +19,7 @@
 
   <div class="form-group col-sm-12">
     <%= f.label :varietal, :class => 'control-label col-sm-2' %>
-    <%= f.collection_select :varietal_id, Varietal.order(:name), :id, :name, include_blank: true %>
+    <%= f.grouped_collection_select :varietal_id, Crop.order(:name), :varietals, :name, :id, :name, include_blank: true %>
   </div>
 
   <div class="form-group col-sm-12">
