@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150921155927) do
+ActiveRecord::Schema.define(version: 20150922035657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,15 +32,6 @@ ActiveRecord::Schema.define(version: 20150921155927) do
     t.string "unit"
   end
 
-  create_table "plans", force: :cascade do |t|
-    t.string   "name"
-    t.decimal  "price"
-    t.string   "paypal_description"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "plantings", force: :cascade do |t|
     t.date     "date"
     t.text     "notes"
@@ -56,16 +47,6 @@ ActiveRecord::Schema.define(version: 20150921155927) do
 
   create_table "plots", force: :cascade do |t|
     t.string "name"
-  end
-
-  create_table "subscriptions", force: :cascade do |t|
-    t.string   "paypay_payer_id"
-    t.string   "paypal_profile_id"
-    t.datetime "paid_until"
-    t.boolean  "canceled"
-    t.integer  "plan_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
