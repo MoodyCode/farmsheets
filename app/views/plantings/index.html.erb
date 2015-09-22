@@ -23,9 +23,9 @@
         <% if planting.harvest.blank? %>
           <tr>
             <td><%= planting.date %></td>
-            <td><%= planting.plot.name %></td>
-            <td><%= planting.crop.name %></td>
-            <td><%= planting.varietal.name %></td>
+            <td><%= planting.plot.name.titleize %></td>
+            <td><%= planting.crop.name.titleize %></td>
+            <td><%= planting.varietal.name.titleize %></td>
             <td><%= planting.quantity %> <%= planting.measurement.unit %></td>
             <td><%= planting.notes %></td>
             <td><%= link_to "Add Harvest", new_planting_harvest_path(planting), class: 'btn btn-default btn-sm' %></td>
@@ -55,9 +55,9 @@
       <% @harvests.each do |harvest| %>
       <tr>
         <td><%= harvest.planting.date %></td>
-        <td><%= harvest.planting.plot.name %></td>
-        <td><%= harvest.planting.crop.name %></td>
-        <td><%= harvest.planting.varietal.name %></td>
+        <td><%= harvest.planting.plot.name.titleize %></td>
+        <td><%= harvest.planting.crop.name.titleize %></td>
+        <td><%= harvest.planting.varietal.name.titleize %></td>
         <td><%= harvest.planting.quantity %> <%= harvest.planting.measurement.unit %></td>
         <td><%= harvest.date %></td>
         <td><%= harvest.yield %> <%= harvest.measurement.unit %></td>
