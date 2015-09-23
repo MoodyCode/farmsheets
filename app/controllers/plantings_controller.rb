@@ -3,9 +3,8 @@ class PlantingsController < ApplicationController
 
   def index
     @user = current_user
-    @plantings = @user.plantings.all
+    @plantings = @user.plantings.includes(:harvest)
     @planting = Planting.new
-    @harvests = Harvest.all
   end
 
   def show

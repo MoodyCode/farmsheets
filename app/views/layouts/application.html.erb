@@ -6,6 +6,9 @@
   <%= stylesheet_link_tag    'styles', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <% if content_for?(:head) %>
+    <%= yield(:head) %>
+  <% end %>
 </head>
 <body>
 
@@ -22,7 +25,7 @@
             <li><a href="#">Your Account</a></li>
             <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
           <% else %>
-            <li><a href="#">Start Your Free Trial</a></li>
+            <li><%= link_to "Start Your Free Trial", new_user_registration_path %></li>
             <li><%= link_to "Log In", new_user_session_path %></li>
           <% end %>
         </ul>

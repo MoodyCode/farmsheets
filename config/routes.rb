@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # devise_for :users
+  # devise_for :users, controllers: {
+  #   sessions: 'users/sessions'
+  # }
+  devise_for :users, controllers: { registrations: "registrations" }
 
   authenticated :user do
     root to: "plantings#index", as: :authenticated_root
@@ -7,18 +11,9 @@ Rails.application.routes.draw do
 
   root to: "static_pages#index"
 
+  resources :accounts
+  resources :crops
   resources :plantings do
     resources :harvests
   end
-  
-  resources :crops
-  resources :plans
-  resources :subscriptions do
-    member do
-      get :make_recurring
-    end
-  end
-
-  post 'paypal/ipn_listener' => 'paypal#ipn_listener'
-
 end

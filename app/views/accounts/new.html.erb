@@ -1,0 +1,46 @@
+<div class="col-sm-6 col-sm-offset-3">
+  <fieldset class="information-box">
+  <h2 class="text-center">New Account</h2>
+  <p>Please fill out the information below to continue your account setup</p>
+
+  <%= form_for @account do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+    <div class="form-group">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, :class => 'form-control col-sm-2' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, :class => 'form-control col-sm-2' %>
+    </div>
+  </fieldset>
+  <fieldset class="information-box">
+    <h1 class="text-center">Lock in Farm Sheets at the lowest rate</h1>
+    <h2 class="text-center">$5/month</h2>
+
+    <p>Purchase Farm Sheets now and lock in this price forever.  We are improving this tool every month with your input.  By joing now and helping us make this tool incredible, you get to keep this rate forever.</p>
+
+    <p>Once we feel this tool is "production ready" it will be priced around $20/month.</p>
+
+    <p>Thanks for your help developing it and enjoy a lifetime of savings!</p>
+
+    <p>- Luke Callahan, Founder of Farmsheets.com</p>
+    
+    <div class="form-group">
+      <%= form_tag accounts_path do %>
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-name="Farm Sheets"
+                data-description="$5 a month subscription"
+                data-locale="auto"
+                data-panelLabel="Subscribe"
+                data-email="<%= j current_user.email %>"
+                data-allowRememberMe=false>
+        </script>
+      <% end %>
+  </fieldset>
+  <p>* Your card will not be charged until after the 7 day free trial is over.</p>
+    </div>
+  <% end %>
+</div>

@@ -34,9 +34,7 @@
       <% end %>
     </tbody>
   </table>
-<% end %>
 
-<% if @harvests.any? %>
   <p class="welcome col-md-12 text-center lead">Harvested Beds</p>
   <table class="table table-hover">
     <thead>
@@ -52,16 +50,16 @@
       </tr>
     </thead>
     <tbody>
-      <% @harvests.each do |harvest| %>
+      <% @plantings.each do |planting| %>
       <tr>
-        <td><%= harvest.planting.date %></td>
-        <td><%= harvest.planting.plot.name.titleize %></td>
-        <td><%= harvest.planting.crop.name.titleize %></td>
-        <td><%= harvest.planting.varietal.name.titleize %></td>
-        <td><%= harvest.planting.quantity %> <%= harvest.planting.measurement.unit %></td>
-        <td><%= harvest.date %></td>
-        <td><%= harvest.yield %> <%= harvest.measurement.unit %></td>
-        <td><%= harvest.planting.notes %></td>
+        <td><%= planting.harvest.date %></td>
+        <td><%= planting.plot.name.titleize %></td>
+        <td><%= planting.crop.name.titleize %></td>
+        <td><%= planting.varietal.name.titleize %></td>
+        <td><%= planting.quantity %> <%= planting.measurement.unit %></td>
+        <td><%= planting.date %></td>
+        <td><%= planting.harvest.yield %> <%= planting.harvest.measurement.unit %></td>
+        <td><%= planting.notes %></td>
       </tr>
       <% end %>
     </tbody>
