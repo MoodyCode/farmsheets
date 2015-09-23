@@ -1,8 +1,9 @@
 <h1>Planting Records</h1>
 
-<p class="welcome col-md-12 text-center lead">Add a New Planting Record</p>
-
-<%= render partial: "form" %>
+<fieldset class="information-box">
+  <p class="welcome col-md-12 text-center lead">Add a New Planting Record</p>
+  <%= render partial: "form" %>
+</fieldset>
 
 <% if @plantings.any? %>
   <p class="welcome col-md-12 text-center lead">Beds To Be Harvested</p>

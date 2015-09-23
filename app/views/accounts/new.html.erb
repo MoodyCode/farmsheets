@@ -14,8 +14,6 @@
       <%= f.label :last_name %>
       <%= f.text_field :last_name, :class => 'form-control col-sm-2' %>
     </div>
-  </fieldset>
-  <fieldset class="information-box">
     <h1 class="text-center">Lock in Farm Sheets at the lowest rate</h1>
     <h2 class="text-center">$5/month</h2>
 
@@ -27,20 +25,18 @@
 
     <p>- Luke Callahan, Founder of Farmsheets.com</p>
     
-    <div class="form-group">
-      <%= form_tag accounts_path do %>
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                data-name="Farm Sheets"
-                data-description="$5 a month subscription"
-                data-locale="auto"
-                data-panelLabel="Subscribe"
-                data-email="<%= j current_user.email %>"
-                data-allowRememberMe=false>
-        </script>
-      <% end %>
-  </fieldset>
-  <p>* Your card will not be charged until after the 7 day free trial is over.</p>
-    </div>
+    <%= form_tag accounts_path do %>
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-name="Farm Sheets"
+              data-description="$5 a month subscription"
+              data-locale="auto"
+              data-panelLabel="Subscribe"
+              data-email="<%= j current_user.email %>"
+              data-allowRememberMe=false>
+      </script>
+    <% end %>
   <% end %>
+  <p>* Your card will not be charged until after the 7 day free trial is over.</p>
+  </fieldset>
 </div>
