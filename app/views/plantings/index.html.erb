@@ -52,16 +52,18 @@
     </thead>
     <tbody>
       <% @plantings.each do |planting| %>
-      <tr>
-        <td><%= planting.harvest.date %></td>
-        <td><%= planting.plot.name.titleize %></td>
-        <td><%= planting.crop.name.titleize %></td>
-        <td><%= planting.varietal.name.titleize %></td>
-        <td><%= planting.quantity %> <%= planting.measurement.unit %></td>
-        <td><%= planting.date %></td>
-        <td><%= planting.harvest.yield %> <%= planting.harvest.measurement.unit %></td>
-        <td><%= planting.notes %></td>
-      </tr>
+        <% if planting.harvest.present? %>
+          <tr>
+            <td><%= planting.harvest.date %></td>
+            <td><%= planting.plot.name.titleize %></td>
+            <td><%= planting.crop.name.titleize %></td>
+            <td><%= planting.varietal.name.titleize %></td>
+            <td><%= planting.quantity %> <%= planting.measurement.unit %></td>
+            <td><%= planting.date %></td>
+            <td><%= planting.harvest.yield %> <%= planting.harvest.measurement.unit %></td>
+            <td><%= planting.notes %></td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
