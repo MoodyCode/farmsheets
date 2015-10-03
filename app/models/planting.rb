@@ -5,4 +5,5 @@ class Planting < ActiveRecord::Base
   belongs_to :measurement
   belongs_to :plot
   belongs_to :varietal
+
 end
