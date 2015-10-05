@@ -10,5 +10,6 @@ class Account < ActiveRecord::Base
       :card  => stripeToken,
       :plan => 232
     )
+    self.stripeToken = customer.id
   end
 end
