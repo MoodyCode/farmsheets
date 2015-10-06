@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   resources :plantings do
     resources :harvests
   end
+
+  post 'stripe/webhook'
 end

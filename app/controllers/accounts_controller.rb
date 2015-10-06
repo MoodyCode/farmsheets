@@ -7,7 +7,9 @@ class AccountsController < ApplicationController
 
   def create
     @user = current_user
-    @account = @user.build_account account_params.merge(stripeEmail: stripe_params['stripeEmail'])
+    @account = @user.build_account account_params.merge(stripeEmail: stripe_params['stripeEmail'], 
+                                                        stripeToken: stripe_params['stripeToken'], 
+                                                        stripeTokenType: stripe_params['stripeTokenType'])
     raise "Please, check account errors" unless @account.valid?
     @account.process_subscription
     if @account.save

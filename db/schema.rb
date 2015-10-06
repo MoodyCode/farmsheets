@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922220455) do
+ActiveRecord::Schema.define(version: 20151006214235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20150922220455) do
     t.string  "stripeToken"
     t.string  "stripeTokenType"
     t.string  "stripeEmail"
+    t.string  "stripe_customer_id"
+    t.string  "stripe_status"
   end
 
   create_table "crops", force: :cascade do |t|

@@ -10,6 +10,7 @@ class Account < ActiveRecord::Base
       :card  => stripeToken,
       :plan => 232
     )
-    self.stripeToken = customer.id
+    self.stripe_customer_id = customer.id
+    self.stripe_status = customer.subscriptions.data.first.status
   end
 end
