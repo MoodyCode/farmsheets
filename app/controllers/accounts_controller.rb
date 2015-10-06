@@ -26,7 +26,7 @@ class AccountsController < ApplicationController
   def show
     @user = current_user
     @account = @user.account
-    stripe = Stripe::Customer.retrieve(@account.stripeToken)
+    stripe = Stripe::Customer.retrieve(@account.stripe_customer_id)
     @stripe = stripe.subscriptions.data[0]
   end
 
