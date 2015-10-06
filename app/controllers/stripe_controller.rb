@@ -5,7 +5,7 @@ class StripeController < ApplicationController
   STRIPE_STATUS_CHANGE = ""
 
   def webhook    
-    StripeLogger.info "Received event with ID: #{params[:id]} Type: #{params[:type]}"
+    # StripeLogger.info "Received event with ID: #{params[:id]} Type: #{params[:type]}"
 
     event = Stripe::Event.retrieve(params[:id])
     stripe_customer_token = event.data.object.customer
