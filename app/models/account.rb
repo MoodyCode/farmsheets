@@ -8,7 +8,8 @@ class Account < ActiveRecord::Base
     customer = Stripe::Customer.create(
       :email => stripeEmail,
       :card  => stripeToken,
-      :plan => 232
+      :plan => 232,
+      :trial_end => (Time.now + 5 * 60).to_i
     )
     self.stripe_customer_id = customer.id
     self.stripe_status = customer.subscriptions.data.first.status
