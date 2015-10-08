@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_cache_buster
 
+  # STRIPE_CUSTOMER_ID = current_user
+
   def set_cache_buster
     response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
     response.headers["Pragma"] = "no-cache"
