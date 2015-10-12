@@ -1,5 +1,6 @@
 class PlantingsController < ApplicationController
   before_action :authenticate_user!
+  before_action :account_active?
 
   def index
     @user = current_user
@@ -23,7 +24,7 @@ class PlantingsController < ApplicationController
       redirect_to :root
     else
       flash[:notice] = "There was a problem"
-      redirect_to :root
+      redirect_to account_path current_user
     end
   end
 

@@ -1,4 +1,6 @@
 class HarvestsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :account_active?
 
   def new
     @planting = Planting.find(params[:planting_id])

@@ -1,4 +1,5 @@
 class Account < ActiveRecord::Base
+
   belongs_to :user
   validates :first_name, :presence => true
   validates :last_name, :presence => true
@@ -12,5 +13,10 @@ class Account < ActiveRecord::Base
     )
     self.stripe_customer_id = customer.id
     self.stripe_status = customer.subscriptions.data.first.status
+  end
+
+  def cancel_subscription
+    customer = Stripe::Customer.retrieve(stripe_customer_id)
+    customer.subscriptions.retrieve(customer.subscriptions.data.first.id).delete(:at_period_end => true)
   end
 end
