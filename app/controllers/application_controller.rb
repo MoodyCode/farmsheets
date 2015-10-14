@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 private
   def account_active?
     if current_user.account.stripe_status == 'canceled'
-      redirect_to account_path(current_user.id)
+      redirect_to accounts_path
     end
   end
 end

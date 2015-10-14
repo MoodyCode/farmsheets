@@ -24,7 +24,7 @@ class PlantingsController < ApplicationController
       redirect_to :root
     else
       flash[:notice] = "There was a problem"
-      redirect_to account_path current_user
+      redirect_to accounts_path
     end
   end
 
