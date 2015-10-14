@@ -1,13 +1,43 @@
-<h1><%= current_user.email %></h1>
 
-<p><%= @account.first_name %> <%= @account.last_name %></p>
 
-<p>Payment Account: <%= @account.stripe_customer_id %></p>
+<fieldset class="information-box">
+  <legend>Account Details</legend>
+    <dl>
+      <dt>Name</dt>
+      <dd><%= @account.first_name.titleize %> <%= @account.last_name.titleize %></dd>
+    </dl>
+    <dl>
+      <dt>Email</dt>
+      <dd><%= current_user.email %></dd>
+    </dl>
+    <dl>
+      <dt>Account Number</dt> 
+      <dd><%= @account.stripe_customer_id %></dd>
+    </dl>
+    <% if @stripe.present? %>
+      <dl>
+        <dt>Plan Name</dt> 
+        <dd><%= @stripe.plan.name %></dd>
+      </dl>
+      <dl>
+        <dt>Plan Start</dt>
+        <dd><%= Time.at(@stripe.start).strftime("%B %e, %Y") %></dd>
+      </dl>
+      <dl>
+        <dt>Plan End</dt>
+        <dd><%= Time.at(@stripe.current_period_end).strftime("%B %e, %Y") %></dd>
+      </dl>
+      <dl>
+        <dt>Account Status</dt> 
+        <dd><%= @account.stripe_status.titleize %></dd>
+      </dl>
+      <% if @stripe.cancel_at_period_end == true %>
+        <p>You have cancelled your account.  Your account will be cancelled on <%= Time.at(@stripe.current_period_end).strftime("%B %e, %Y") %></p>
+      <% else %>
+        <%= link_to 'Cancel Subscription', method: @account.cancel_subscription %>
+      <% end %>
 
-  <p>Plan Name: <%= @stripe.plan.name %></p>
-  <p>Plan Start: <%= Time.at(@stripe.start).strftime("%B %e, %Y") %></p>
-  <p>Plan End: <%= Time.at(@stripe.current_period_end).strftime("%B %e, %Y") %></p>
-  <p>Account Status: <%= @account.stripe_status.titleize %></p>
-  <%= link_to 'Cancel Subscription', method: @account.cancel_subscription %>
-
-  <p>You do not have an active account</p>
+    <% else %>
+      <p>You do not have an active account</p>
+    <% end %>
+</fieldset>

@@ -23,7 +23,7 @@ class AccountsController < ApplicationController
       redirect_to accounts_path
   end
 
-  def show
+  def index
     @user = current_user
     @account = @user.account
     stripe = Stripe::Customer.retrieve(@account.stripe_customer_id)

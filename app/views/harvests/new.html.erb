@@ -1,3 +1,5 @@
-
+<p><%= @planting.crop.name.titleize %> - <%= @planting.varietal.name.titleize %></p>
+<p>Date Planted: <%= @planting.date.strftime("%B %e, %Y") %></p>
+<p>Notes: <%= @planting.notes %></p>
 
 <%= render 'form' %>

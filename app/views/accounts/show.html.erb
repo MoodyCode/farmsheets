@@ -1,6 +1,6 @@
 <h1><%= current_user.email %></h1>
 
-<p><%= @account.first_name %> <%= @account.last_name %></p>
+<p class="lead"><%= @account.first_name.titleize %> <%= @account.last_name.titleize %></p>
 
 <p>Payment Account: <%= @account.stripe_customer_id %></p>
 
@@ -9,7 +9,13 @@
   <p>Plan Start: <%= Time.at(@stripe.start).strftime("%B %e, %Y") %></p>
   <p>Plan End: <%= Time.at(@stripe.current_period_end).strftime("%B %e, %Y") %></p>
   <p>Account Status: <%= @account.stripe_status.titleize %></p>
-  <%= link_to 'Cancel Subscription', method: @account.cancel_subscription %>
+  
+  <% if @stripe.cancel_at_period_end == true %>
+    <p>You have cancelled your account.  Your account will be cancelled on <%= Time.at(@stripe.current_period_end).strftime("%B %e, %Y") %></p>
+  <% else %>
+    <%= link_to 'Cancel Subscription', method: @account.cancel_subscription %>
+  <% end %>
+
 <% else %>
   <p>You do not have an active account</p>
 <% end %>
