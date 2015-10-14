@@ -6,4 +6,9 @@ class Planting < ActiveRecord::Base
   belongs_to :plot
   belongs_to :varietal
 
+  validates :crop_id, :presence => true
+  validates :date, :presence => true
+  validates :quantity, :presence => true
+  validates :varietal_id, :presence => true
+
 end

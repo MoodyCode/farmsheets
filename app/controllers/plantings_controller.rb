@@ -20,11 +20,11 @@ class PlantingsController < ApplicationController
   def create
     @planting = Planting.new(planting_params)
     if @planting.save
-      flash[:notice] = "Your planting was successfully saved."
+      flash[:notice] = "Your planting record was successfully saved."
       redirect_to :root
     else
-      flash[:notice] = "There was a problem"
-      redirect_to accounts_path
+      flash[:alert] = "There was a problem saving your planting record"
+      redirect_to :root
     end
   end
 

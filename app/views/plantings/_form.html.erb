@@ -9,12 +9,11 @@
 
   <div class="form-group col-sm-12">
     <%= f.label "Planting Size", :class => 'control-label col-sm-2' %>
-    <div class="col-sm-5">
-      <%= f.radio_button :plot_id, 1, label: "Tray", :checked => true, inline: true %>
-      <%= f.radio_button :plot_id, 2, :disabled => true, label: "Bed", :class => 'radio-inline' %>
+    <div class="col-sm-2">
+      <%= f.radio_button :plot_id, 1, label: "Tray", :checked => true, inline: true %> Tray
+      <%= f.radio_button :plot_id, 2, :disabled => true, label: "Bed", :class => 'radio-inline' %> Bed
     </div>
   </div>
-
 
   <div class="form-group col-sm-12">
     <%= f.label :crop, :class => 'control-label col-sm-2' %>
@@ -35,7 +34,7 @@
     <div class="col-sm-2">
       <%= f.number_field :quantity, :class => 'form-control', :step => 'any' %>
     </div>
-      <div class="radio col-sm-2">
+      <div class="col-sm-2">
         <%= f.radio_button :measurement_id, "1", :checked => true, :class => 'radio-inline' %> Ounces
         <%= f.radio_button :measurement_id, "2", :class => 'radio-inline' %> Grams
       </div>

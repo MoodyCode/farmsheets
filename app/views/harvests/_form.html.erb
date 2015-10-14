@@ -1,17 +1,20 @@
-<%= form_for [@planting, @harvest] do |f| %>
-  <div class="form-group dropdown col-sm-12">
-    <%= f.label "Harvest Date", :class => 'control-label col-sm-2' %>
-    <%= date_select :harvest, :date, :class => 'form-control datepicker' %>
-  </div>
+<fieldset class="information-box">
+  <legend>Add Harvest</legend>
+  <%= form_for [@planting, @harvest] do |f| %>
+    <div class="form-group dropdown col-sm-12">
+      <%= f.label "Harvest Date", :class => 'control-label col-sm-2' %>
+      <%= date_select :harvest, :date, :class => 'form-control datepicker' %>
+    </div>
 
-  <div class="form-group col-sm-12">
-    <%= f.label "Harvest Yield", :class => 'control-label col-sm-2' %>
-    <%= f.number_field :yield, :class => 'text_field col-sm-2', :step => 'any' %>
-      <div class="form-group col-sm-2">
-        <%= f.radio_button :measurement_id, "1", :checked => true, :class => 'radio-inline' %> Ounces
-        <%= f.radio_button :measurement_id, "2", :class => 'radio-inline' %> Grams
-      </div>
-  </div>
+    <div class="form-group col-sm-12">
+      <%= f.label "Harvest Yield", :class => 'control-label col-sm-2' %>
+      <%= f.number_field :yield, :class => 'text_field col-sm-2', :step => 'any' %>
+        <div class="form-group col-sm-2">
+          <%= f.radio_button :measurement_id, "1", :checked => true, :class => 'radio-inline' %> Ounces
+          <%= f.radio_button :measurement_id, "2", :class => 'radio-inline' %> Grams
+        </div>
+    </div>
 
-  <%= f.submit %>
-<% end %>
+    <%= f.submit "Add Harvest", :class => "btn btn-default" %>
+  <% end %>
+</fieldset>
