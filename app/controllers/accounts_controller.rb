@@ -1,4 +1,6 @@
 class AccountsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :account?, except: :new
 
   def new
     @user = current_user
@@ -26,8 +28,9 @@ class AccountsController < ApplicationController
   def index
     @user = current_user
     @account = @user.account
-    stripe = Stripe::Customer.retrieve(@account.stripe_customer_id)
-    @stripe = stripe.subscriptions.data[0]
+    customer = Stripe::Customer.retrieve(@account.stripe_customer_id)
+    @card = customer.sources.retrieve(customer.sources.data[0].id)
+    @stripe = customer.subscriptions.data[0]
   end
 
 private

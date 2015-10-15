@@ -1,5 +1,6 @@
 class HarvestsController < ApplicationController
   before_action :authenticate_user!
+  before_action :account?
   before_action :account_active?
 
   def new
@@ -12,9 +13,11 @@ class HarvestsController < ApplicationController
     @harvest = @planting.build_harvest(harvest_params)
     @harvest.dtm = (@harvest.date - @planting.date).to_i
     if @harvest.save
+      flash[:notice] = "Your harvest record was successfully saved."
       redirect_to :root
     else
-      render new_harvest_path
+      flash[:alert] = "There was a problem saving your harvest record"
+      render :new
     end
   end
 

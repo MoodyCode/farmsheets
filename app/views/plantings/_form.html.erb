@@ -11,7 +11,7 @@
     <%= f.label "Planting Size", :class => 'control-label col-sm-2' %>
     <div class="col-sm-2">
       <%= f.radio_button :plot_id, 1, label: "Tray", :checked => true, inline: true %> Tray
-      <%= f.radio_button :plot_id, 2, :disabled => true, label: "Bed", :class => 'radio-inline' %> Bed
+      <%= f.radio_button :plot_id, 2, :disabled => true, label: "Bed", :class => 'radio-inline' %> <span class="disabled">Bed</span>
     </div>
   </div>
 

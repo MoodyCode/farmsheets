@@ -17,7 +17,15 @@ class ApplicationController < ActionController::Base
 private
   def account_active?
     if current_user.account.stripe_status == 'canceled'
+      flash[:notice] = "Your account is currently canceled"
       redirect_to accounts_path
+    end
+  end
+
+  def account?
+    if current_user.account.nil?
+      flash[:notice] = "Please fill in account information and credit card information to continue"
+      redirect_to new_account_path
     end
   end
 end

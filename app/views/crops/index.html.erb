@@ -1,7 +1,7 @@
 <h1 class="text-center">Dashboard</h1>
 
 <% @varietals_grouped.each do |key, value| %>
-  <h3 class="text-center"><%= value.first.crop.name.titleize %>: <small><%= key.titleize %></small> </h3>
+  <h3 class="text-center"><%= value.first.crop.name.titleize %> <small>- <%= key.titleize %></small> </h3>
   <div class="col-sm-4">
     <fieldset class="information-box">
       <legend>Averages</legend>

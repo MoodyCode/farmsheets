@@ -1,5 +1,6 @@
 class PlantingsController < ApplicationController
   before_action :authenticate_user!
+  before_action :account?
   before_action :account_active?
 
   def index
