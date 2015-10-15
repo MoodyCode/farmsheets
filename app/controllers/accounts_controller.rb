@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user!
-  before_action :account?, except: :new
+  before_action :account?, except: [:new, :create]
 
   def new
     @user = current_user
