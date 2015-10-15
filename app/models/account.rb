@@ -19,4 +19,16 @@ class Account < ActiveRecord::Base
     customer = Stripe::Customer.retrieve(stripe_customer_id)
     customer.subscriptions.retrieve(customer.subscriptions.data.first.id).delete(:at_period_end => true)
   end
+
+  def reactivate_subscription
+    customer = Stripe::Customer.retrieve(stripe_customer_id)
+    subscription = customer.subscriptions.retrieve(customer.subscriptions.data.first.id)
+    subscription.plan = "232"
+    subscription.save
+  end
+
+  def subscribe
+    customer = Stripe::Customer.retrieve(stripe_customer_id)
+    customer.subscriptions.create(:plan => "232")
+  end
 end

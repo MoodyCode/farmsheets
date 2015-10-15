@@ -18,7 +18,7 @@ private
   def account_active?
     if current_user.account.stripe_status == 'canceled'
       flash[:notice] = "Your account is currently canceled"
-      redirect_to accounts_path
+      redirect_to account_detail_path
     end
   end
 

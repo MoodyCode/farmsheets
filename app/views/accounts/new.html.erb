@@ -25,7 +25,7 @@
 
     <p>- Luke Callahan, Founder of Farmsheets.com</p>
     
-    <%= form_tag accounts_path do %>
+    <%= form_tag account_detail_path do %>
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
               data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
               data-name="Farm Sheets"

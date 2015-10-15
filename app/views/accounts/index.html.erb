@@ -30,18 +30,20 @@
         <dd><%= @account.stripe_status.titleize %></dd>
       </dl>
       <% if @stripe.cancel_at_period_end == true %>
-      <dl>
-        <dd>You elected to cancelled your account.  You may continue to use this account until the end of this subscription period which will end on <%= Time.at(@stripe.current_period_end).strftime("%B %e, %Y") %>.</dd>
-      </dl>
+        <dl>
+          <dd>You elected to cancelled your account.  You may continue to use this account until the end of this subscription period which will end on <%= Time.at(@stripe.current_period_end).strftime("%B %e, %Y") %>.</dd>
+        </dl>
+        <p><%= link_to 'Reactivate Subscription', reactivate_path %></p>
       <% else %>
-        <%= link_to 'Cancel Subscription', method: @account.cancel_subscription %>
+        <p><%= link_to 'Cancel Subscription', cancel_path, data: {confirm: 'Are you sure you want to cancel your subscription?'} %></p>
       <% end %>
 
     <% else %>
       <p>You do not have an active account</p>
+      <p><%= link_to 'Resubscribe', subscribe_path %></p>
     <% end %>
 
-    <%= link_to "Change your password", edit_user_registration_path %>
+    <p><%= link_to "Change your password", edit_user_registration_path %></p>
 </fieldset>
 
 <fieldset class="information-box col-md-4">

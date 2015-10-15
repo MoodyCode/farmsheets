@@ -22,7 +22,7 @@ class AccountsController < ApplicationController
 
     rescue Stripe::CardError => e
       flash[:error] = e.message
-      redirect_to accounts_path
+      redirect_to account_detail_path
   end
 
   def index
@@ -31,6 +31,27 @@ class AccountsController < ApplicationController
     customer = Stripe::Customer.retrieve(@account.stripe_customer_id)
     @card = customer.sources.retrieve(customer.sources.data[0].id)
     @stripe = customer.subscriptions.data[0]
+  end
+
+  def cancel
+    user = current_user
+    account = user.account
+    account.cancel_subscription
+    redirect_to account_detail_path
+  end
+
+  def reactivate
+    user = current_user
+    account = user.account
+    account.reactivate_subscription
+    redirect_to account_detail_path
+  end
+
+  def resubscribe
+    user = current_user
+    account = user.account
+    account.subscribe
+    redirect_to account_detail_path
   end
 
 private

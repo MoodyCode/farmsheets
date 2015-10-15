@@ -12,7 +12,14 @@ Rails.application.routes.draw do
   root to: "static_pages#index"
 
   resources :accounts
+  get 'account-detail', to: 'accounts#index'
+  get 'reactivate', to: 'accounts#reactivate'
+  get 'cancel', to: 'accounts#cancel'
+  get 'subscribe', to: 'accounts#resubscribe'
+
   resources :crops
+  get 'dashboard', to: 'crops#index'
+
   resources :plantings do
     resources :harvests
   end
