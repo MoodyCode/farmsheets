@@ -29,6 +29,6 @@ class Account < ActiveRecord::Base
 
   def subscribe
     customer = Stripe::Customer.retrieve(stripe_customer_id)
-    customer.subscriptions.create(:plan => "232", :trial_end => Time.now.to_i )
+    customer.subscriptions.create(:plan => "232", :trial_end => (Time.now.to_i + 60))
   end
 end
