@@ -12,14 +12,14 @@
       <dt>Account Number</dt> 
       <dd><%= @account.stripe_customer_id %></dd>
     </dl>
+      <dl>
+        <dt>Account Status</dt> 
+        <dd><%= @account.stripe_status.titleize %></dd>
+      </dl>
     <% if @stripe.present? %>
       <dl>
         <dt>Plan Name</dt> 
         <dd><%= @stripe.plan.name %></dd>
-      </dl>
-      <dl>
-        <dt>Account Status</dt> 
-        <dd><%= @account.stripe_status.titleize %></dd>
       </dl>
       <% if @stripe.cancel_at_period_end == true %>
         <dl>
