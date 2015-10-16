@@ -5,8 +5,7 @@ class StripeController < ApplicationController
     event = Stripe::Event.retrieve(params[:id])
     stripe_event = event.data.object
     customer = Stripe::Customer.retrieve(stripe_event.customer)
-    subscription = customer.subscriptions.retrieve(stripe_event.id)
-    stripe_status = subscription.status
+    stripe_status = customer.subscriptions.first.status
     # stripe_status = event.data.object.status
 
     account = Account.where(stripe_customer_id: customer).first
