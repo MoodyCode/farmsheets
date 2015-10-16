@@ -9,7 +9,7 @@ class StripeController < ApplicationController
     stripe_status = subscription.status
     # stripe_status = event.data.object.status
 
-    account = Account.where(stripe_customer_id: stripe_customer_token).first
+    account = Account.where(stripe_customer_id: customer).first
     account.update(stripe_status: stripe_status)
 
     render text: "success"
