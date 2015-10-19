@@ -1,94 +1,11 @@
-<fieldset class="information-box col-md-6">
-  <legend>Account Details</legend>
-    <dl>
-      <dt>Name</dt>
-      <dd><%= @account.first_name.titleize %> <%= @account.last_name.titleize %></dd>
-    </dl>
-    <dl>
-      <dt>Email</dt>
-      <dd><%= current_user.email %></dd>
-    </dl>
-    <dl>
-      <dt>Account Number</dt> 
-      <dd><%= @account.stripe_customer_id %></dd>
-    </dl>
-      <dl>
-        <dt>Account Status</dt> 
-        <dd><%= @account.stripe_status.titleize %></dd>
-      </dl>
-    <% if @stripe.present? %>
-      <dl>
-        <dt>Plan Name</dt> 
-        <dd><%= @stripe.plan.name %></dd>
-      </dl>
-      <% if @stripe.cancel_at_period_end == true %>
-        <dl>
-          <dt>Plan End</dt>
-          <dd><%= Time.at(@stripe.current_period_end).strftime("%B %e, %Y") %></dd>
-        </dl>
-        <dl>
-          <dd>You elected to cancelled your account.  You may continue to use this account until the end of this subscription period which will end on <%= Time.at(@stripe.current_period_end).strftime("%B %e, %Y") %>.</dd>
-        </dl>
-        <p><%= link_to 'Reactivate Subscription', reactivate_path %></p>
-      <% else %>
-        <p><%= link_to 'Cancel Subscription', cancel_path, data: {confirm: 'Are you sure you want to cancel your subscription?'} %></p>
-      <% end %>
+<div class="col-md-6">
+  <%= render 'account_details' %>
+</div>
 
-    <% else %>
-      <p>You do not have an active account</p>
-      <p><%= link_to 'Resubscribe', subscribe_path %></p>
-    <% end %>
+<div class="col-md-6">
+  <%= render 'credit_card' %>
+</div>
 
-    <p><%= link_to "Change your password", edit_user_registration_path %></p>
-</fieldset>
-
-<fieldset class="information-box col-md-5">
-  <legend>Card Details</legend>
-  <dl>
-    <dt>Card Type</dt>
-    <dd><%= @card.brand %></dd>
-  </dl>
-  <dl>
-    <dt>Card Last 4</dt>
-    <dd><%= @card.last4 %></dd>
-  </dl>
-  <dl>
-    <dt>Expiration</dt>
-    <dd><%= @card.exp_month %>/<%= @card.exp_year %></dd>
-  </dl>
-</fieldset>
-
-<% if @customer.discount.present? %>
-  <% if @customer.discount.coupon.valid == true %>
-    <fieldset class="information-box col-md-5">
-      <legend>Active Discounts</legend>
-      <dl>
-        <dt>Type</dt>
-        <dd><%= @customer.discount.coupon.id %></dd>
-      </dl>
-      <dl>
-        <dt>Amount</dt>
-        <dd><%= @customer.discount.coupon.percent_off %>% off</dd>
-      </dl>
-      <dl>
-        <dt>Discount Duration</dt>
-        <dd><%= @customer.discount.coupon.duration_in_months %> months</dd>
-      </dl>
-      <dl>
-        <dt>Discount Start</dt>
-        <dd><%= Time.at(@customer.discount.coupon.created).strftime("%B %e, %Y") %></dd>
-      </dl>
-    </fieldset>
-  <% end %>
-<% else %>
-  <fieldset class="information-box col-md-5">
-    <legend>Add Coupon Code</legend>
-    <%= form_tag "/coupons" do %>
-      <div>
-        <%= text_field_tag "coupon_code" %>
-      </div>
-
-      <%= submit_tag "Apply Coupon", :class => "btn btn-default" %>
-    <% end %>
-  </fieldset>
-<% end %>
+<div class="col-md-6">
+  <%= render 'discount' %>
+</div>

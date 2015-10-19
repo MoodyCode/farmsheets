@@ -1,0 +1,34 @@
+<% if @customer.discount.present? %>
+  <% if @customer.discount.coupon.valid == true %>
+    <fieldset class="information-box">
+      <legend>Active Discounts</legend>
+      <dl>
+        <dt>Type</dt>
+        <dd><%= @customer.discount.coupon.id %></dd>
+      </dl>
+      <dl>
+        <dt>Amount</dt>
+        <dd><%= @customer.discount.coupon.percent_off %>% off</dd>
+      </dl>
+      <dl>
+        <dt>Discount Duration</dt>
+        <dd><%= @customer.discount.coupon.duration_in_months %> months</dd>
+      </dl>
+      <dl>
+        <dt>Discount Start</dt>
+        <dd><%= Time.at(@customer.discount.coupon.created).strftime("%B %e, %Y") %></dd>
+      </dl>
+    </fieldset>
+  <% end %>
+<% else %>
+  <fieldset class="information-box">
+    <legend>Add Coupon Code</legend>
+    <%= form_tag "/coupons" do %>
+      <div>
+        <%= text_field_tag "coupon_code" %>
+      </div>
+
+      <%= submit_tag "Apply Coupon", :class => "btn btn-default" %>
+    <% end %>
+  </fieldset>
+<% end %>

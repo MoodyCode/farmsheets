@@ -1,0 +1,15 @@
+<fieldset class="information-box">
+  <legend>Card Details</legend>
+  <dl>
+    <dt>Card Type</dt>
+    <dd><%= @card.brand %></dd>
+  </dl>
+  <dl>
+    <dt>Card Last 4</dt>
+    <dd><%= @card.last4 %></dd>
+  </dl>
+  <dl>
+    <dt>Expiration</dt>
+    <dd><%= @card.exp_month %>/<%= @card.exp_year %></dd>
+  </dl>
+</fieldset>
