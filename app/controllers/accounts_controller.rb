@@ -52,6 +52,9 @@ class AccountsController < ApplicationController
     account = user.account
     account.subscribe
     redirect_to account_detail_path
+  rescue Exception => e
+    flash[:error] = e.message
+    redirect_to account_detail_path
   end
 
   def coupons
@@ -60,9 +63,9 @@ class AccountsController < ApplicationController
     coupon_code = params[:coupon_code]
     account.apply_coupon(coupon_code)
     redirect_to account_detail_path
-    rescue Exception => e  
-      flash[:error] = e.message
-      redirect_to account_detail_path
+  rescue Exception => e  
+    flash[:error] = e.message
+    redirect_to account_detail_path
   end
 
 private
