@@ -13,10 +13,10 @@ class HarvestsController < ApplicationController
     @harvest = @planting.build_harvest(harvest_params)
     @harvest.dtm = (@harvest.date - @planting.date).to_i
     if @harvest.save
-      flash[:notice] = "Your harvest record was successfully saved."
+      flash[:success] = "Your harvest record was successfully saved."
       redirect_to :root
     else
-      flash[:alert] = "There was a problem saving your harvest record"
+      flash[:error] = "There was a problem saving your harvest record"
       render :new
     end
   end

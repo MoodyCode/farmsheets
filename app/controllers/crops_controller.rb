@@ -22,10 +22,10 @@ class CropsController < ApplicationController
   def create
     @crop = Crop.new(crop_params)
     if @crop.save
-      flash[:notice] = "Your crop was successfully saved."
+      flash[:success] = "Your crop was successfully saved."
       redirect_to :root
     else
-      flash[:notice] = "Something went wrong saving your crop."
+      flash[:error] = "Something went wrong saving your crop."
       redirect_to new_crop_path
     end
   end
