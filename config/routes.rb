@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'reactivate', to: 'accounts#reactivate'
   get 'cancel', to: 'accounts#cancel'
   get 'subscribe', to: 'accounts#resubscribe'
+  post 'coupons', to: 'accounts#coupons'
 
   resources :crops
   get 'dashboard', to: 'crops#index'

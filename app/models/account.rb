@@ -31,4 +31,10 @@ class Account < ActiveRecord::Base
     customer = Stripe::Customer.retrieve(stripe_customer_id)
     customer.subscriptions.create(:plan => "232", :trial_end => "now")
   end
+
+  def apply_coupon(coupon)
+    customer = Stripe::Customer.retrieve(stripe_customer_id)
+    customer.coupon = coupon
+    customer.save
+  end
 end

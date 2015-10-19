@@ -57,3 +57,32 @@
     <dd><%= @card.exp_month %>/<%= @card.exp_year %></dd>
   </dl>
 </fieldset>
+
+<% if @customer.discount.present? %>
+  <fieldset class="information-box col-md-4">
+    <legend>Active Discounts</legend>
+    <dl>
+      <dt>Type</dt>
+      <dd><%= @customer.discount.coupon.id %></dd>
+    </dl>
+    <dl>
+      <dt>Amount</dt>
+      <dd><%= @customer.discount.coupon.percent_off %>% </dd>
+    </dl>
+    <dl>
+      <dt>Discount Type</dt>
+      <dd><%= @customer.discount.coupon.id %></dd>
+    </dl>
+  </fieldset>
+<% else %>
+  <fieldset class="information-box col-md-4">
+    <legend>Add Coupon Code</legend>
+    <%= form_tag "/coupons" do %>
+      <div>
+        <%= text_field_tag "coupon_code" %>
+      </div>
+
+      <%= submit_tag "Apply Coupon", :class => "btn btn-default" %>
+    <% end %>
+  </fieldset>
+<% end %>

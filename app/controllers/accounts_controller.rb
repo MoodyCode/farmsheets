@@ -28,9 +28,9 @@ class AccountsController < ApplicationController
   def index
     @user = current_user
     @account = @user.account
-    customer = Stripe::Customer.retrieve(@account.stripe_customer_id)
-    @card = customer.sources.retrieve(customer.sources.data[0].id)
-    @stripe = customer.subscriptions.data[0]
+    @customer = Stripe::Customer.retrieve(@account.stripe_customer_id)
+    @card = @customer.sources.retrieve(@customer.sources.data[0].id)
+    @stripe = @customer.subscriptions.data[0]
   end
 
   def cancel
@@ -52,6 +52,17 @@ class AccountsController < ApplicationController
     account = user.account
     account.subscribe
     redirect_to account_detail_path
+  end
+
+  def coupons
+    user = current_user
+    account = user.account
+    coupon_code = params[:coupon_code]
+    account.apply_coupon(coupon_code)
+    redirect_to account_detail_path
+    rescue Exception => e  
+      flash[:error] = e.message
+      redirect_to account_detail_path
   end
 
 private
