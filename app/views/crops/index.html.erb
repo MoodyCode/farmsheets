@@ -11,7 +11,7 @@
       </dl>
       <dl>
         <dt>Average Yield</dt>
-        <dd><%= (value.map{|z| z.harvest.yield.to_i }.inject {|sum, a| sum + a }.to_f / value.size) %> pounds</dd>
+        <dd><%= (value.map{|z| z.harvest.yield.to_i }.inject {|sum, a| sum + a }.to_f / value.size) %> ounces</dd>
       </dl>
       <dl>
         <dt>Average Seed Qty</dt>
@@ -29,7 +29,7 @@
       </dl>
       <dl>
         <dt>Yield</dt>
-        <dd><%= value.max_by{|z| z.harvest.dtm}.harvest.yield %> pounds</dd>
+        <dd><%= value.max_by{|z| z.harvest.dtm}.harvest.yield %> ounces</dd>
       </dl>
       <dl>
         <dt>Seed Qty</dt>
@@ -47,7 +47,7 @@
       </dl>
       <dl>
         <dt>Yield</dt>
-        <dd><%= value.min_by{|z| z.harvest.dtm}.harvest.yield %> pounds</dd>
+        <dd><%= value.min_by{|z| z.harvest.dtm}.harvest.yield %> ounces</dd>
       </dl>
       <dl>
         <dt>Seed Qty</dt>
