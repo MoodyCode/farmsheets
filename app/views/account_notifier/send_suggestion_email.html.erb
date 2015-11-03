@@ -4,6 +4,8 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
+    <p><%= @suggestion[:category] %></p>
     <p><%= @suggestion[:body] %></p>
+    <p>Submitted by: <%= @user.email %></p>
   </body>
 </html>

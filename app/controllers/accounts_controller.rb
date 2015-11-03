@@ -73,7 +73,10 @@ class AccountsController < ApplicationController
     account = user.account
     suggestion = suggestion_params
     AccountNotifier.send_suggestion_email(user, account, suggestion).deliver
-    flash[:noticed] = "Thank you for your suggestion."
+    flash[:success] = "Thank you for your suggestion."
+    redirect_to account_detail_path
+  rescue Exception => e
+    flash[:error] = e.message
     redirect_to account_detail_path
   end
 
