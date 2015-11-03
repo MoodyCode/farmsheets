@@ -68,6 +68,15 @@ class AccountsController < ApplicationController
     redirect_to account_detail_path
   end
 
+  def suggestion_email
+    user = current_user
+    account = user.account
+    suggestion = suggestion_params
+    AccountNotifier.send_suggestion_email(user, account, suggestion).deliver
+    flash[:noticed] = "Thank you for your suggestion."
+    redirect_to account_detail_path
+  end
+
 private
   def account_params
     params.require(:account).permit(:first_name, :last_name, :user_id)
@@ -75,5 +84,9 @@ private
 
   def stripe_params
     params.permit(:stripeEmail, :stripeToken, :stripeTokenType)
+  end
+
+  def suggestion_params
+    params.permit(:category, :body)
   end
 end

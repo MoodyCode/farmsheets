@@ -1,0 +1,10 @@
+<fieldset class="information-box">
+  <legend>Active Discounts</legend>
+  <%= form_tag "/suggestion_email" do %>
+    <div>
+      <%= text_field_tag "category" %>
+      <%= text_area_tag "body" %>
+    </div>
+    <%= submit_tag "Send Suggestion", :class => "btn btn-default" %>
+  <% end %>
+</fieldset>

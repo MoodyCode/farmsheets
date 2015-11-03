@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'subscribe', to: 'accounts#resubscribe'
   get 'update_cc', to: 'accounts#update_cc'
   post 'coupons', to: 'accounts#coupons'
+  post 'suggestion_email', to: 'accounts#suggestion_email'
 
   resources :crops
   get 'dashboard', to: 'crops#index'
