@@ -29,6 +29,13 @@ class PlantingsController < ApplicationController
     end
   end
 
+  def destroy
+    @planting = Planting.find(params[:id])
+    @planting.destroy
+    flash[:success] = "The planting record was successfully deleted."
+    redirect_to :root
+  end
+
 private
 
   def planting_params

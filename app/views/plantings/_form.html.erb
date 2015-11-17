@@ -23,7 +23,7 @@
   </div>
 
   <div class="form-group col-sm-12">
-    <%= f.label :varietal, :class => 'control-label col-sm-2' %>
+    <%= f.label "Variety", :class => 'control-label col-sm-2' %>
     <div class="col-sm-3">
      <%= f.grouped_collection_select :varietal_id, Crop.order(:name), :varietals, :name, :id, :name, { include_blank: true }, { :class => 'form-control' } %>
     </div>
@@ -41,7 +41,7 @@
   </div>
 
   <div class="form-group col-sm-12">
-    <%= f.label :notes, :class => 'control-label col-sm-2' %>
+    <%= f.label "Planting Notes", :class => 'control-label col-sm-2' %>
     <div class="col-sm-10">
       <%= f.text_area :notes, :class => 'form-control'  %>
     </div>

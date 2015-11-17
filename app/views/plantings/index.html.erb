@@ -28,7 +28,7 @@
             <td><%= planting.crop.name.titleize %></td>
             <td><%= planting.varietal.name.titleize %></td>
             <td><%= planting.quantity %> <%= planting.measurement.unit %></td>
-            <td><%= planting.notes %></td>
+            <td><%= planting.notes.truncate(25, separator: " ") %></td>
             <td><%= link_to "Add Harvest", new_planting_harvest_path(planting), class: 'btn btn-default btn-sm' %></td>
           </tr>
         <% end %>
@@ -61,7 +61,7 @@
             <td><%= planting.quantity %> <%= planting.measurement.unit %></td>
             <td><%= planting.date %></td>
             <td><%= planting.harvest.yield %> <%= planting.harvest.measurement.unit %></td>
-            <td><%= planting.notes %></td>
+            <td><%= planting.notes.truncate(25, separator: " ") %></td>
           </tr>
         <% end %>
       <% end %>

@@ -7,7 +7,7 @@
       <legend>Averages</legend>
       <dl>
         <dt>Average DTM</dt>
-        <dd><%= (value.map{|z| z.harvest.dtm.to_i }.inject {|sum, a| sum + a }.to_f / value.size) %></dd>
+        <dd><%= (value.map{|z| z.harvest.dtm.to_i }.inject {|sum, a| sum + a }.to_f / value.size) %> days</dd>
       </dl>
       <dl>
         <dt>Average Yield</dt>
