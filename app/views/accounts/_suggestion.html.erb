@@ -4,10 +4,11 @@
     <p class="lead">Help us improve FarmSheets.</p>
     <div class="col-md-4">
       <%= select_tag "category", "<option>Suggestion for Improvement</option><option>Inaccurate Information</option><option>Account Issue</option><option>Other</option>".html_safe, :class => 'form-control' %>
-    </div>
     <br />
+    </div>
     <div class="col-md-12">
       <%= text_area_tag "body", '', :class => 'form-control', :rows => '3' %>
+    <br />
     </div>
     <div class="col-md-12">
       <%= submit_tag "Send Suggestion", :class => "btn btn-default" %>
