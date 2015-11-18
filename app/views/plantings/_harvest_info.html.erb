@@ -1,0 +1,16 @@
+<% if @planting.harvest.present? %>
+  <legend>Harvest Information</legend>
+  <dl>
+    <dt>Harvest Date</dt>
+    <dd><%= @planting.harvest.date %></dd>
+  </dl>
+  <dl>
+    <dt>Harvest Yield</dt>
+    <dd><%= @planting.harvest.yield %> <%= @planting.harvest.measurement.unit %></dd>
+  </dl>
+  <dl>
+    <dt>Harvest Notes</dt>
+    <dd><%= @planting.harvest.notes %></dd>
+  </dl>
+<%= link_to "Edit Harvest", edit_planting_harvest_path(@planting, @planting.harvest), :class => "btn btn-default btn-xs col-xs-offset-2" %>
+<% end %>

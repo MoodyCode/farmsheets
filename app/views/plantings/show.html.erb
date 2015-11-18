@@ -1,1 +1,10 @@
-<h1>Planting Record</h1>
+<fieldset class="information-box">
+  <p class="lead">Planting Record</p>
+
+  <%= render 'planting_info' %>
+  <%= link_to "Edit Planting", edit_planting_path(@planting), :class => "btn btn-default btn-xs col-xs-offset-2" %>
+  <br />
+  <%= render 'harvest_info' %>
+</fieldset>
+<br />
+<%= link_to "Planting Records", :root, :class => "btn btn-default" %>

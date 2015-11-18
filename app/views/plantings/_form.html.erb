@@ -1,3 +1,5 @@
+<fieldset class="information-box">
+  <legend>Add a New Planting Record</legend>
 <%= form_for @planting, :html => {:class => "form-horizontal"} do |f| %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="form-group dropdown col-sm-12">
@@ -52,3 +54,4 @@
   </div>
 
 <% end %>
+</fieldset>

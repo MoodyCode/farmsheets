@@ -47,3 +47,26 @@ fieldset legend {
 .disabled {
     color: lightgrey;
 }
+
+.glyphicon {
+  padding-right: 5px;
+}
+
+.glyphicon-remove {
+  color: red;
+  font-size: 1.3em;
+}
+
+.glyphicon-edit {
+  color: orange;
+  font-size: 1.3em;
+}
+
+.glyphicon-eye-open {
+  color: darkgrey;
+  font-size: 1.3em;
+}
+
+td a:hover {
+  text-decoration: none;
+}

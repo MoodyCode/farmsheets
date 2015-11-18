@@ -10,8 +10,7 @@ class PlantingsController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @plantings = @user.plantings.all
+    @planting = Planting.find(params[:id])
   end
 
   def new
@@ -24,8 +23,23 @@ class PlantingsController < ApplicationController
       flash[:success] = "Your planting record was successfully saved."
       redirect_to :root
     else
-      flash[:error] = "There was a problem saving your planting record"
+      flash[:error] = "There was a problem saving your planting record."
       redirect_to :root
+    end
+  end
+
+  def edit
+    @planting = Planting.find(params[:id])
+  end
+
+  def update
+    @planting = Planting.find(params[:id])
+    if @planting.update(planting_params)
+      flash[:success] = "Planting record successfully updated."
+      redirect_to planting_path(@planting)
+    else
+      flash[:error] = "There was a problem saving your planting record."
+      render :edit
     end
   end
 
@@ -37,9 +51,7 @@ class PlantingsController < ApplicationController
   end
 
 private
-
   def planting_params
     params.require(:planting).permit(:date, :crop_id, :quantity, :measurement_id, :notes, :plot_id, :user_id, :varietal_id)
   end
-
 end

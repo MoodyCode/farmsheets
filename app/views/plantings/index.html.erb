@@ -1,35 +1,45 @@
 <p class="lead">Planting Records</p>
 
-<fieldset class="information-box">
-  <legend>Add a New Planting Record</legend>
-  <%= render partial: "form" %>
-</fieldset>
+<%= render partial: "form" %>
 
 <% if @plantings.any? %>
   <p class="welcome col-md-12 text-center lead">Beds To Be Harvested</p>
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Planting Date</th>
-        <th>Planting Size</th>
-        <th>Crop</th>
-        <th>Variety</th>
-        <th>Qty of Seed</th>
-        <th>Notes</th>
-        <th></th>
+        <th class='col-sm-1'>Planting Date</th>
+        <th class='col-sm-2'>Crop</th>
+        <th class='col-sm-2'>Variety</th>
+        <th class='col-sm-1'>Planting Size</th>
+        <th class='col-sm-1'>Seed Quantity</th>
+        <th class='col-sm-3'>Planting Notes</th>
+        <th class='col-sm-1'></th>
+        <th class='col-sm-1'></th>
       </tr>
     </thead>
     <tbody>
       <% @plantings.each do |planting| %>
         <% if planting.harvest.blank? %>
           <tr>
-            <td><%= planting.date %></td>
-            <td><%= planting.plot.name.titleize %></td>
+            <td><%= planting.date.strftime("%m-%d-%Y") %></td>
             <td><%= planting.crop.name.titleize %></td>
             <td><%= planting.varietal.name.titleize %></td>
+            <td><%= planting.plot.name.titleize %></td>
             <td><%= planting.quantity %> <%= planting.measurement.unit %></td>
-            <td><%= planting.notes.truncate(25, separator: " ") %></td>
-            <td><%= link_to "Add Harvest", new_planting_harvest_path(planting), class: 'btn btn-default btn-sm' %></td>
+            <td><%= planting.notes.truncate(40, separator: " ") %></td>
+            <td><%= link_to "Add Harvest", new_planting_harvest_path(planting), class: 'btn btn-primary btn-xs' %></td>
+            <td>
+              <%= link_to planting_path(planting.id) do %>
+                <i class="glyphicon glyphicon-eye-open"></i>
+              <% end  %>
+              <%= link_to edit_planting_path(planting.id) do %>
+                <i class="glyphicon glyphicon-edit"></i>
+              <% end %>
+              <%= link_to planting_path(planting.id), :data => {:confirm => "Are you sure you want to delete this planting record?",
+                                                                :method => "delete"} do %>
+                <i class="glyphicon glyphicon-remove"></i>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       <% end %>
@@ -40,28 +50,33 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Planting Date</th>
-        <th>Planting Size</th>
-        <th>Crop</th>
-        <th>Variety</th>
-        <th>Qty of Seed</th>
-        <th>Harvest Date</th>
-        <th>Yield</th>
-        <th>Notes</th>
+        <th class='col-sm-1'>Harvest Date</th>
+        <th class='col-sm-2'>Crop</th>
+        <th class='col-sm-2'>Variety</th>
+        <th class='col-sm-1'>Planting Size</th>
+        <th class='col-sm-1'>Yield Amount</th>
+        <th class='col-sm-4'>Harvest Notes</th>
+        <th class='col-sm-1'></th>
       </tr>
     </thead>
     <tbody>
       <% @plantings.each do |planting| %>
         <% if planting.harvest.present? %>
           <tr>
-            <td><%= planting.harvest.date %></td>
-            <td><%= planting.plot.name.titleize %></td>
+            <td><%= planting.harvest.date.strftime("%m-%d-%Y") %></td>
             <td><%= planting.crop.name.titleize %></td>
             <td><%= planting.varietal.name.titleize %></td>
-            <td><%= planting.quantity %> <%= planting.measurement.unit %></td>
-            <td><%= planting.date %></td>
+            <td><%= planting.plot.name.titleize %></td>
             <td><%= planting.harvest.yield %> <%= planting.harvest.measurement.unit %></td>
-            <td><%= planting.notes.truncate(25, separator: " ") %></td>
+            <td><%= planting.harvest.notes.truncate(55, separator: " ") %></td>
+            <td>
+              <%= link_to planting_path(planting) do %>
+                <i class="glyphicon glyphicon-eye-open"></i>
+              <% end %>
+              <%= link_to edit_planting_harvest_path(planting, planting.harvest) do %>
+                <i class="glyphicon glyphicon-edit"></i>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       <% end %>
