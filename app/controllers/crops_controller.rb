@@ -31,6 +31,22 @@ class CropsController < ApplicationController
   end
 
   def show
+    @crops = Crop.all
+  end
+
+  def edit
+    @crop = Crop.find(params[:id])
+  end
+
+  def update
+    @crop = Crop.find(params[:id])
+    if @crop.update(crop_params)
+      flash[:success] = "Crop was successfully updated."
+      redirect_to crop_path(@crop)
+    else
+      flash[:error] = "There was a problem saving your crop."
+      render :edit
+    end
   end
 
 private
