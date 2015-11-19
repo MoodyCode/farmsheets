@@ -1,58 +1,7 @@
-<h1 class="text-center">Dashboard</h1>
+<h1>Crops List</h1>
 
-<% @varietals_grouped.each do |key, value| %>
-  <h3 class="text-center"><%= value.first.crop.name.titleize %> <small>- <%= key.titleize %></small> </h3>
-  <div class="col-sm-4">
-    <fieldset class="information-box">
-      <legend>Averages</legend>
-      <dl>
-        <dt>Average DTM</dt>
-        <dd><%= (value.map{|z| z.harvest.dtm.to_i }.inject {|sum, a| sum + a }.to_f / value.size) %> days</dd>
-      </dl>
-      <dl>
-        <dt>Average Yield</dt>
-        <dd><%= (value.map{|z| z.harvest.yield.to_i }.inject {|sum, a| sum + a }.to_f / value.size) %> ounces</dd>
-      </dl>
-      <dl>
-        <dt>Average Seed Qty</dt>
-        <dd><%= (value.map{|z| z.quantity.to_i }.inject {|sum, a| sum + a }.to_f / value.size) %> ounces</dd>
-      </dl>
-    </fieldset>
-  </div>  
-
-  <div class="col-sm-4">
-    <fieldset class="information-box">
-      <legend>Highest Yield</legend>
-      <dl>
-        <dt>DTM</dt>
-        <dd><%= value.max_by{|z| z.harvest.dtm}.harvest.dtm %> days</dd>
-      </dl>
-      <dl>
-        <dt>Yield</dt>
-        <dd><%= value.max_by{|z| z.harvest.dtm}.harvest.yield %> ounces</dd>
-      </dl>
-      <dl>
-        <dt>Seed Qty</dt>
-        <dd><%= value.max_by{|z| z.harvest.dtm}.quantity %> ounces</dd>
-      </dl>
-    </fieldset>
-  </div>  
-
-  <div class="col-sm-4">
-    <fieldset class="information-box">
-      <legend>Lowest Yield</legend>
-      <dl>
-        <dt>DTM</dt>
-        <dd><%= value.min_by{|z| z.harvest.dtm}.harvest.dtm %> days</dd>
-      </dl>
-      <dl>
-        <dt>Yield</dt>
-        <dd><%= value.min_by{|z| z.harvest.dtm}.harvest.yield %> ounces</dd>
-      </dl>
-      <dl>
-        <dt>Seed Qty</dt>
-        <dd><%= value.min_by{|z| z.harvest.dtm}.quantity %> ounces</dd>
-      </dl>
-    </fieldset>
-  </div>
-<% end %>
+<ul class='list-unstyled'>
+  <% @crops.each do |crop| %>
+    <li><%= crop.name %></li>
+  <% end %>
+</ul>

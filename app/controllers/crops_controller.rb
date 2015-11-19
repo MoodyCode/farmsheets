@@ -4,19 +4,10 @@ class CropsController < ApplicationController
   before_action :account_active?
 
   def index
-    @plantings = []
-    @user = current_user
-    plantings = @user.plantings.includes(:harvest, :crop, :varietal, :measurement)
-    plantings.each do |planting|
-      if planting.harvest.present?
-        @plantings << planting
-      end
-    end
-    @varietals_grouped = @plantings.group_by { |x| x.varietal.name }
+    @crops = Crop.all.order(:name)
   end
 
   def new
-    @crops = Crop.all.order(:name)
     @crop = Crop.new
   end
 
@@ -32,7 +23,8 @@ class CropsController < ApplicationController
   end
 
   def show
-    @crops = Crop.all
+    @crop = Crop.find(params[:id])
+    @varietals = @crop.varietals.all
   end
 
   def edit

@@ -21,10 +21,9 @@ Rails.application.routes.draw do
   post 'suggestion_email', to: 'accounts#suggestion_email'
 
   resources :crops
-  get 'dashboard', to: 'crops#index'
-
-  resources :plantings do
-    resources :harvests
+  get 'dashboard', to: 'dashboard#index'
+  # resources :dashboard
+  resources :plantings do resources :harvests
   end
 
   post 'stripe/webhook'

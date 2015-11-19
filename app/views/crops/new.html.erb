@@ -1,11 +1,3 @@
 <h1>Enter a new Crop</h1>
 
 <%= render 'form' %>
-
-<h2>Crops in database</h2>
-
-<ul class='list-unstyled'>
-  <% @crops.each do |crop| %>
-    <li><%= crop.name %></li>
-  <% end %>
-</ul>
