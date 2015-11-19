@@ -16,6 +16,7 @@ class CropsController < ApplicationController
   end
 
   def new
+    @crops = Crop.all.order(:name)
     @crop = Crop.new
   end
 
