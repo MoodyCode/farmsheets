@@ -1,7 +1,10 @@
-<h1><%= @crop.name %></h1>
+<h1><%= @crop.name.titleize %></h1>
+<%= link_to "Edit Crop", edit_crop_path(@crop), :class => "btn btn-default btn-xs" %>
+<%= link_to "Back to Crop List", crops_path, :class => "btn btn-default btn-xs" %>
 
+<h3>Variety List for this Crop</h3>
 <ul class='list-unstyled'>
   <% @varietals.each do |varietal| %>
-    <li><%= varietal.name %></li>
+    <li><%= varietal.name.titleize %></li>
   <% end %>
 </ul>
