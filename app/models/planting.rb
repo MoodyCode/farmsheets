@@ -1,5 +1,5 @@
 class Planting < ActiveRecord::Base
-  has_one :harvest
+  has_one :harvest, dependent: :destroy
   belongs_to :user
   belongs_to :crop
   belongs_to :measurement

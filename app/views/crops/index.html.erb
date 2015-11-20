@@ -1,7 +1,7 @@
 <h1>Crops List</h1>
-
+<%= link_to "Add a new crop", new_crop_path, :class => 'btn btn-default btn-sm' %>
 <ul class='list-unstyled'>
   <% @crops.each do |crop| %>
-    <li><%= crop.name %></li>
+    <li><%= link_to crop.name, crop_path(crop) %></li>
   <% end %>
 </ul>

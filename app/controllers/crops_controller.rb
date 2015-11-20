@@ -15,7 +15,7 @@ class CropsController < ApplicationController
     @crop = Crop.new(crop_params)
     if @crop.save
       flash[:success] = "Your crop was successfully saved."
-      redirect_to :root
+      redirect_to crops_path
     else
       flash[:error] = "Something went wrong saving your crop."
       redirect_to new_crop_path
@@ -24,7 +24,7 @@ class CropsController < ApplicationController
 
   def show
     @crop = Crop.find(params[:id])
-    @varietals = @crop.varietals.all
+    @varietals = @crop.varietals.all.order(:name)
   end
 
   def edit
