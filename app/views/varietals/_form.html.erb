@@ -1,9 +1,10 @@
-<%= form_for @crop do |f| %>
+<%= form_for [@crop, @varietal] do |f| %>
   <div class="form-group dropdown col-sm-12">
     <%= f.text_field :name, :class => 'form-control' %>
   </div>
 
   <div class="form-group col-sm-12">
-    <%= f.submit "Submit Record", :class => 'btn btn-default' %>
+    <%= f.submit "Add Varietal", :class => 'btn btn-default' %>
   </div>
+
 <% end %>

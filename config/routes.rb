@@ -20,7 +20,10 @@ Rails.application.routes.draw do
   post 'coupons', to: 'accounts#coupons'
   post 'suggestion_email', to: 'accounts#suggestion_email'
 
-  resources :crops
+  resources :crops do
+    resources :varietals
+  end
+  
   get 'dashboard', to: 'dashboard#index'
   # resources :dashboard
   resources :plantings do resources :harvests

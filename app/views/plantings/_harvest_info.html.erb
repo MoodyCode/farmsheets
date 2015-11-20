@@ -2,11 +2,15 @@
   <legend>Harvest Information</legend>
   <dl>
     <dt>Harvest Date</dt>
-    <dd><%= @planting.harvest.date %></dd>
+    <dd><%= @planting.harvest.date.strftime("%B %e, %Y") %></dd>
   </dl>
   <dl>
     <dt>Harvest Yield</dt>
     <dd><%= @planting.harvest.yield %> <%= @planting.harvest.measurement.unit %></dd>
+  </dl>
+  <dl>
+    <dt>Days to Maturity</dt>
+    <dd><%= @planting.harvest.dtm %></dd>
   </dl>
   <dl>
     <dt>Harvest Notes</dt>

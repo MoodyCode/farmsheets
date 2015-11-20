@@ -35,6 +35,11 @@ class PlantingsController < ApplicationController
   def update
     @planting = Planting.find(params[:id])
     if @planting.update(planting_params)
+      if @planting.harvest.present?
+        harvest = @planting.harvest
+        harvest.dtm = (harvest.date - @planting.date).to_i
+        harvest.save
+      end
       flash[:success] = "Planting record successfully updated."
       redirect_to planting_path(@planting)
     else

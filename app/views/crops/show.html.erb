@@ -3,8 +3,9 @@
 <%= link_to "Back to Crop List", crops_path, :class => "btn btn-default btn-xs" %>
 
 <h3>Variety List for this Crop</h3>
+<%= link_to "Add varietal", new_crop_varietal_path(@crop), :class => "btn btn-default btn-xs" %>
 <ul class='list-unstyled'>
   <% @varietals.each do |varietal| %>
-    <li><%= varietal.name.titleize %></li>
+    <li><%= varietal.name.titleize %> - <%= link_to "Edit", edit_crop_varietal_path(varietal.crop, varietal) %></li>
   <% end %>
 </ul>

@@ -32,7 +32,7 @@ class HarvestsController < ApplicationController
     @harvest.dtm = (@harvest.date - @planting.date).to_i
     if @harvest.update(harvest_params)
       flash[:success] = "Harvest record successfully updates."
-      redirect_to planting_path(@planting) 
+      redirect_to planting_path(@planting)
     else
       flash[:error] = "There was a problem saving your planting record."
       render :edit
